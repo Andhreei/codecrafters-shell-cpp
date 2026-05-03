@@ -11,13 +11,24 @@
 namespace CommandHandling {
 commandsMap CommandHandler::builtins_;
 
+CommandHandler& CommandHandler::getInstance() {
+   static CommandHandler instance;
+   return instance;
+}
+
+CommandHandler::CommandHandler() {
+   if (builtins_.empty()) {
+      initShellCommands();
+   }
+}
+
 void CommandHandler::initShellCommands() {
    builtins_["exit"] = std::make_unique<Exit>();
    builtins_["echo"] = std::make_unique<Echo>();
    builtins_["type"] = std::make_unique<Type>();
 }
 
-bool CommandHandler::isValidCommand(const std::string& command) {
+bool CommandHandler::isValidCommand(const std::string& command) const {
    return builtins_.find(command) not_eq builtins_.cend();
 }
 

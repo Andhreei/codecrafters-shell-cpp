@@ -11,7 +11,7 @@ int main() {
    std::cout << std::unitbuf;
    std::cerr << std::unitbuf;
 
-   CommandHandling::CommandHandler commandHandler;
+   CommandHandling::CommandHandler& commandHandler = CommandHandling::CommandHandler::getInstance();
    while (std::cin.good()) {
       try {
          std::cout << "$ ";

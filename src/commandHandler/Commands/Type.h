@@ -11,8 +11,9 @@ namespace CommandHandling {
 class Type : public BuiltInCommand {
   public:
    inline void execute(const std::vector<std::string>& args) override {
+      CommandHandler& commandHandler = CommandHandler::getInstance();
       for (const auto& arg : args) {
-         if (CommandHandler::isValidCommand(arg)) {
+         if (commandHandler.isValidCommand(arg)) {
             std::cout << std::format("{} is a shell builtin\n", arg);
          } else {
             std::cout << std::format("{}: not found\n", arg);

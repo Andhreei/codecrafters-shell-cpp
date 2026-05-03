@@ -16,15 +16,18 @@ using commandsMap = std::unordered_map<std::string, std::unique_ptr<BuiltInComma
  */
 class CommandHandler {
   public:
-   inline CommandHandler() {
-      if (builtins_.empty()) {
-         initShellCommands();
-      }
-   }
-   static bool isValidCommand(const std::string& command);
+   static CommandHandler& getInstance();
+
+   CommandHandler(const CommandHandler&) = delete;
+   CommandHandler& operator=(const CommandHandler&) = delete;
+   CommandHandler(CommandHandler&&) = delete;
+   CommandHandler& operator=(CommandHandler&&) = delete;
+
+   bool isValidCommand(const std::string& command) const;
    void runCommand(const std::string& command, const std::vector<std::string>& args);
 
   private:
+   CommandHandler();
    static void initShellCommands();
    static commandsMap builtins_;
 };
