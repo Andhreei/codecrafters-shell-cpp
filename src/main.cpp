@@ -7,11 +7,13 @@ int main() {
    std::cout << std::unitbuf;
    std::cerr << std::unitbuf;
 
-   std::cout << "$ ";
+   while (std::cin.good()) {
+      std::cout << "$ ";
 
-   std::string command;
-   std::getline(std::cin, command);
-   if (not command.empty()) {
-      std::cout << std::format("{}: command not found", command);
+      std::string command;
+      std::getline(std::cin, command);
+      if (not command.empty()) {
+         std::cout << std::format("{}: command not found\n", command);
+      }
    }
 }
