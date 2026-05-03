@@ -5,20 +5,23 @@
 #include <string>
 #include <unordered_map>
 
-#include "Interfaces/BuiltIn.h"
+#include "Interfaces/BuiltInCommand.h"
 
 namespace CommandHandling {
 
-using commandsMap = std::unordered_map<std::string, std::unique_ptr<BuiltIn>>;
+using commandsMap = std::unordered_map<std::string, std::unique_ptr<BuiltInCommand>>;
 
+/**
+ * Handles the dispatch of the command
+ */
 class CommandHandler {
   public:
-   inline CommandHandler() { initShell(); }
+   inline CommandHandler() { initShellCommands(); }
    bool isValidCommand(const std::string& command);
    void runCommand(const std::string& command, const std::vector<std::string>& args);
 
   private:
-   void initShell();
+   void initShellCommands();
    commandsMap builtins_;
 };
 }  // namespace CommandHandling

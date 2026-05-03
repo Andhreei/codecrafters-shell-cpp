@@ -2,8 +2,7 @@
 
 namespace CommandHandling {
 
-void Exit::execute(const std::vector<std::string>& args) {
-   int code{args.empty() ? 0 : std::stoi(args[0])};
-   exit(code);
+void Exit::execute([[maybe_unused]] const std::vector<std::string>& args) {
+   exit(0);
 }
 }  // namespace CommandHandling

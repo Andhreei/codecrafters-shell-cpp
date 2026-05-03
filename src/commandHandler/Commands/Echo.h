@@ -4,9 +4,9 @@
 namespace CommandHandling {
 
 /**
- * Implementation of "exit" command
+ * Implementation of "echo" command
  */
-class Exit : public BuiltInCommand {
+class Echo : public BuiltInCommand {
   public:
    void execute(const std::vector<std::string>& args) override;
 };
