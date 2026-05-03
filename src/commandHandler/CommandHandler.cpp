@@ -9,7 +9,6 @@
 #include "Exceptions/NotFound.h"
 
 namespace CommandHandling {
-commandsMap CommandHandler::builtins_;
 
 CommandHandler& CommandHandler::getInstance() {
    static CommandHandler instance;

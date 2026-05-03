@@ -28,7 +28,7 @@ class CommandHandler {
 
   private:
    CommandHandler();
-   static void initShellCommands();
-   static commandsMap builtins_;
+   void initShellCommands();
+   commandsMap builtins_;
 };
 }  // namespace CommandHandling
