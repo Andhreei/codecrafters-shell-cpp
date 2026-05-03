@@ -1,3 +1,4 @@
+#include <format>
 #include <iostream>
 #include <string>
 
@@ -6,6 +7,11 @@ int main() {
    std::cout << std::unitbuf;
    std::cerr << std::unitbuf;
 
-   // TODO: Uncomment the code below to pass the first stage
    std::cout << "$ ";
+
+   std::string command;
+   std::getline(std::cin, command);
+   if (not command.empty()) {
+      std::cout << std::format("{}: command not found", command);
+   }
 }
