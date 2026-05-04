@@ -5,6 +5,7 @@
 
 #include "Commands/Echo.h"
 #include "Commands/Exit.h"
+#include "Commands/PrintWorkingDirectory.h"
 #include "Commands/Type.h"
 #include "Exceptions/NotFound.h"
 
@@ -25,6 +26,7 @@ void CommandHandler::initShellBuiltinCommands() {
    builtins_["exit"] = std::make_unique<Exit>();
    builtins_["echo"] = std::make_unique<Echo>();
    builtins_["type"] = std::make_unique<Type>();
+   builtins_["pwd"] = std::make_unique<PrintWorkingDirectory>();
 }
 
 bool CommandHandler::isBuiltInCommand(const std::string& command) const {
