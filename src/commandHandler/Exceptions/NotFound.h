@@ -1,7 +1,7 @@
 #pragma once
 #include <exception>
 
-namespace CommandHandling {
+namespace CommandHandling::Exceptions {
 
 class NotFound : public std::exception {
   public:
@@ -13,4 +13,4 @@ class NotFound : public std::exception {
   private:
    std::string commandInCause_;
 };
-}  // namespace CommandHandling
+}  // namespace CommandHandling::Exceptions

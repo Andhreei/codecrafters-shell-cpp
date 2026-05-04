@@ -8,6 +8,15 @@ namespace CommandHandling {
  */
 class Echo : public BuiltInCommand {
   public:
-   void execute(const std::vector<std::string>& args) override;
+   void execute(const std::vector<std::string>& args) override {
+      for (auto it{args.cbegin()}; it not_eq args.cend(); ++it) {
+         if (it == args.cend() - 1) {
+            std::cout << *it;
+         } else {
+            std::cout << *it << " ";
+         }
+      }
+      std::cout << std::endl;
+   }
 };
 }  // namespace CommandHandling

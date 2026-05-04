@@ -25,7 +25,7 @@ int main() {
             std::vector<std::string> args{words.begin() + 1, words.end()};
             commandHandler.runCommand(command, args);
          }
-      } catch (const CommandHandling::NotFound& exception) {
+      } catch (const CommandHandling::Exceptions::NotFound& exception) {
          std::cout << std::format("{}: command not found\n", exception.getCommand());
       }
    }

@@ -17,26 +17,27 @@ CommandHandler& CommandHandler::getInstance() {
 
 CommandHandler::CommandHandler() {
    if (builtins_.empty()) {
-      initShellCommands();
+      initShellBuiltinCommands();
    }
 }
 
-void CommandHandler::initShellCommands() {
+void CommandHandler::initShellBuiltinCommands() {
    builtins_["exit"] = std::make_unique<Exit>();
    builtins_["echo"] = std::make_unique<Echo>();
    builtins_["type"] = std::make_unique<Type>();
 }
 
-bool CommandHandler::isValidCommand(const std::string& command) const {
+bool CommandHandler::isBuiltInCommand(const std::string& command) const {
    return builtins_.find(command) not_eq builtins_.cend();
 }
 
 void CommandHandler::runCommand(const std::string& command, const std::vector<std::string>& args) {
-   bool isValid{isValidCommand(command)};
-   if (isValid) {
+   if (isBuiltInCommand(command)) {
       builtins_[command]->execute(args);
+   } else if (ExecutableRunner::find(command)) {
+      ExecutableRunner::run(command, args);
    } else {
-      throw NotFound{command};
+      throw Exceptions::NotFound{command};
    }
 }
 }  // namespace CommandHandling

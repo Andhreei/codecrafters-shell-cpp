@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "../Interfaces/BuiltInCommand.h"
+#include "ExecutableRunner.h"
 
 namespace CommandHandling {
 
@@ -19,9 +20,9 @@ class Type : public BuiltInCommand {
       CommandHandler& commandHandler = CommandHandler::getInstance();
       for (const auto& arg : args) {
          bool found{false};
-         if (commandHandler.isValidCommand(arg)) {
+         if (commandHandler.isBuiltInCommand(arg)) {
             std::cout << std::format("{} is a shell builtin\n", arg);
-            break;
+            continue;
          } else if (std::getenv("PATH") not_eq NULL) {
             const char* pathEnv = std::getenv("PATH");
             if (pathEnv != nullptr) {

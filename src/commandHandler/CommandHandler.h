@@ -12,7 +12,7 @@ namespace CommandHandling {
 using commandsMap = std::unordered_map<std::string, std::unique_ptr<BuiltInCommand>>;
 
 /**
- * Handles the dispatch of the command
+ * Singleton handling the dispatch of the command
  */
 class CommandHandler {
   public:
@@ -23,12 +23,12 @@ class CommandHandler {
    CommandHandler(CommandHandler&&) = delete;
    CommandHandler& operator=(CommandHandler&&) = delete;
 
-   bool isValidCommand(const std::string& command) const;
+   bool isBuiltInCommand(const std::string& command) const;
    void runCommand(const std::string& command, const std::vector<std::string>& args);
 
   private:
    CommandHandler();
-   void initShellCommands();
+   void initShellBuiltinCommands();
    commandsMap builtins_;
 };
 }  // namespace CommandHandling

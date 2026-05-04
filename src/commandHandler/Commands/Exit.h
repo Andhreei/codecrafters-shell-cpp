@@ -8,6 +8,6 @@ namespace CommandHandling {
  */
 class Exit : public BuiltInCommand {
   public:
-   void execute(const std::vector<std::string>& args) override;
+   void execute(const std::vector<std::string>& args) override { exit(0); }
 };
 }  // namespace CommandHandling
